@@ -1,0 +1,65 @@
+{
+  "name": "@gg-utils/terminal-ui-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Reusable terminal UI primitives for classic readline, Ink, and OpenTUI command surfaces.",
+  "exports": {
+    "./cli-interactive": {
+      "types": "./src/cli-interactive/framework.ts",
+      "default": "./src/cli-interactive/framework.ts"
+    },
+    "./ink/bridge-task": {
+      "types": "./src/ink/bridge-task.ts",
+      "default": "./src/ink/bridge-task.ts"
+    },
+    "./ink/captured-output": {
+      "types": "./src/ink/captured-output.tsx",
+      "default": "./src/ink/captured-output.tsx"
+    },
+    "./ink/chrome": {
+      "types": "./src/ink/chrome.tsx",
+      "default": "./src/ink/chrome.tsx"
+    },
+    "./ink/command-preview": {
+      "types": "./src/ink/command-preview.tsx",
+      "default": "./src/ink/command-preview.tsx"
+    },
+    "./ink/legend": {
+      "types": "./src/ink/legend.tsx",
+      "default": "./src/ink/legend.tsx"
+    },
+    "./ink/status": {
+      "types": "./src/ink/status.tsx",
+      "default": "./src/ink/status.tsx"
+    },
+    "./ink/use-stdout-dimensions": {
+      "types": "./src/ink/use-stdout-dimensions.ts",
+      "default": "./src/ink/use-stdout-dimensions.ts"
+    },
+    "./opentui/create-renderer": {
+      "types": "./src/opentui/create-renderer.ts",
+      "default": "./src/opentui/create-renderer.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "tsconfig.json",
+    "tsconfig.build.json"
+  ],
+  "scripts": {
+    "build": "node ../../node_modules/typescript/bin/tsc -p tsconfig.build.json",
+    "type-check": "node ../../node_modules/typescript/bin/tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@opentui/core": "^0.1.90",
+    "ink": "^6.8.0",
+    "react": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0"
+  },
+  "main": "./src/cli-interactive/framework.ts",
+  "types": "./src/cli-interactive/framework.ts"
+}
