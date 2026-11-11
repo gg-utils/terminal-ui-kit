@@ -55,4 +55,3 @@ export declare function InkCapturedOutputBlock({ title, lines, maxLines, lineCol
     /** Show domain prefix for additional context */
     showDomain?: boolean;
 }): React.ReactNode;
-//# sourceMappingURL=captured-output.d.ts.map

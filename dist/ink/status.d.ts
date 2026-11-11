@@ -61,4 +61,3 @@ declare const inkStatus: {
     InkOptionSelector: typeof InkOptionSelector;
 };
 export default inkStatus;
-//# sourceMappingURL=status.d.ts.map

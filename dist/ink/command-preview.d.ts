@@ -16,4 +16,3 @@ export declare function InkCommandPreview({ title, commandLine, }: {
     title?: string;
     commandLine: string;
 }): React.ReactNode;
-//# sourceMappingURL=command-preview.d.ts.map

@@ -613,17 +613,17 @@ export async function printAndRunCommand(options: {
   const commandText =
     options.commandText ??
     buildCommandPreview({
-      args: options.args,
+      ...(options.args === undefined ? {} : { args: options.args }),
       binary: options.previewBinary ?? options.binary,
     });
   options.session.printCommand(commandText);
   await runCommand({
-    allowNonZeroExit: options.allowNonZeroExit,
-    args: options.args,
+    ...(options.allowNonZeroExit === undefined ? {} : { allowNonZeroExit: options.allowNonZeroExit }),
+    ...(options.args === undefined ? {} : { args: options.args }),
     binary: options.binary,
     commandText,
     cwd: options.cwd,
-    previewBinary: options.previewBinary,
+    ...(options.previewBinary === undefined ? {} : { previewBinary: options.previewBinary }),
     session: options.session,
   });
 }
@@ -642,12 +642,12 @@ export async function printAndRunNpmScript(options: {
   const commandText =
     options.commandText ??
     buildNpmRunPreview({
-      args: options.args,
+      ...(options.args === undefined ? {} : { args: options.args }),
       scriptName: options.scriptName,
     });
   options.session.printCommand(commandText);
   await runNpmScript({
-    args: options.args,
+    ...(options.args === undefined ? {} : { args: options.args }),
     commandText,
     cwd: options.cwd,
     scriptName: options.scriptName,
@@ -673,7 +673,7 @@ export async function previewAndRunNpmScript(options: {
   warningText?: string;
 }): Promise<void> {
   const commandText = buildNpmRunPreview({
-    args: options.args,
+    ...(options.args === undefined ? {} : { args: options.args }),
     scriptName: options.scriptName,
   });
   options.session.printPanelTitle(
@@ -699,7 +699,7 @@ export async function previewAndRunNpmScript(options: {
 
   options.session.writeLine("");
   await runNpmScript({
-    args: options.args,
+    ...(options.args === undefined ? {} : { args: options.args }),
     commandText,
     cwd: options.cwd,
     scriptName: options.scriptName,

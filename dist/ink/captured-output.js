@@ -1,4 +1,18 @@
 import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
+/**
+ * @fileoverview Ink component for rendering captured CLI output with semantic domain and level-based
+ * color mapping, plus utility functions for color determination and line truncation.
+ *
+ * This file owns the captured-output renderer used by terminal apps to display
+ * domain-colored and level-priority output blocks.
+ * Color priority: ERROR/FATAL > WARN > DEBUG/TRACE > PERF > domain > source.
+ *
+ * @testing CLI manual: npm run terminal-ui-kit:type-check
+ * @see packages/terminal-ui-kit/src/ink/bridge-task.ts - Task bridge that streams lines consumed by this renderer.
+ * @see packages/terminal-ui-kit/src/ink/status.tsx - Tone semantics used as fallback when domain/level are unset.
+ * @documentation reviewed=2026-04-11 standard=FILE_OVERVIEW_STANDARDS_TYPESCRIPT@3
+ */
+import React from "react";
 import { Box, Text } from "ink";
 /**
  * Determines the appropriate color for a log line based on source, domain, and level.
@@ -83,4 +97,3 @@ export function InkCapturedOutputBlock({ title, lines, maxLines, lineColor = ink
     const recent = sliceRecentLines(lines, maxLines);
     return (_jsxs(Box, { flexDirection: "column", marginTop: title ? 1 : 0, children: [title ? _jsx(Text, { bold: true, children: title }) : null, recent.map((line, index) => (_jsxs(Text, { color: lineColor(line.source, line.domain, line.level), children: [showDomain && renderDomainPrefix(line.domain), bracketSource ? `[${line.source}] ${line.text}` : line.text] }, `${line.source}:${index}`)))] }));
 }
-//# sourceMappingURL=captured-output.js.map

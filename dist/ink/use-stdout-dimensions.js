@@ -38,4 +38,3 @@ export function useStdoutDimensions() {
     }, [stdout]);
     return dimensions;
 }
-//# sourceMappingURL=use-stdout-dimensions.js.map

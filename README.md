@@ -102,3 +102,11 @@ npm run build
 - This package is intentionally lower level than the domain kits.
 - It does not own command catalogs, workflow state, or subprocess policy.
 - Consumers should keep domain labels and risk decisions in their own packages.
+
+## Use from another repository
+
+Requires Node `>=22.0.0 <27`. Install the built JavaScript and declarations by tag:
+
+```json
+{"dependencies": {"@gg-utils/terminal-ui-kit": "git+https://github.com/gg-utils/terminal-ui-kit.git#v0.2.0"}}
+```
