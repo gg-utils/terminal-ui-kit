@@ -474,17 +474,17 @@ export async function runNpmScript(options) {
 export async function printAndRunCommand(options) {
     const commandText = options.commandText ??
         buildCommandPreview({
-            args: options.args,
+            ...(options.args === undefined ? {} : { args: options.args }),
             binary: options.previewBinary ?? options.binary,
         });
     options.session.printCommand(commandText);
     await runCommand({
-        allowNonZeroExit: options.allowNonZeroExit,
-        args: options.args,
+        ...(options.allowNonZeroExit === undefined ? {} : { allowNonZeroExit: options.allowNonZeroExit }),
+        ...(options.args === undefined ? {} : { args: options.args }),
         binary: options.binary,
         commandText,
         cwd: options.cwd,
-        previewBinary: options.previewBinary,
+        ...(options.previewBinary === undefined ? {} : { previewBinary: options.previewBinary }),
         session: options.session,
     });
 }
@@ -495,12 +495,12 @@ export async function printAndRunCommand(options) {
 export async function printAndRunNpmScript(options) {
     const commandText = options.commandText ??
         buildNpmRunPreview({
-            args: options.args,
+            ...(options.args === undefined ? {} : { args: options.args }),
             scriptName: options.scriptName,
         });
     options.session.printCommand(commandText);
     await runNpmScript({
-        args: options.args,
+        ...(options.args === undefined ? {} : { args: options.args }),
         commandText,
         cwd: options.cwd,
         scriptName: options.scriptName,
@@ -513,7 +513,7 @@ export async function printAndRunNpmScript(options) {
  */
 export async function previewAndRunNpmScript(options) {
     const commandText = buildNpmRunPreview({
-        args: options.args,
+        ...(options.args === undefined ? {} : { args: options.args }),
         scriptName: options.scriptName,
     });
     options.session.printPanelTitle(options.panelTitle ?? "Command Preview", options.panelSubtitle ?? options.description);
@@ -530,7 +530,7 @@ export async function previewAndRunNpmScript(options) {
     }
     options.session.writeLine("");
     await runNpmScript({
-        args: options.args,
+        ...(options.args === undefined ? {} : { args: options.args }),
         commandText,
         cwd: options.cwd,
         scriptName: options.scriptName,
@@ -541,4 +541,3 @@ export async function previewAndRunNpmScript(options) {
 function resolveNpmExecutable() {
     return process.platform === "win32" ? "npm.cmd" : "npm";
 }
-//# sourceMappingURL=framework.js.map

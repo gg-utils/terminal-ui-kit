@@ -44,4 +44,3 @@ declare const inkChrome: {
     InkColumnDivider: typeof InkColumnDivider;
 };
 export default inkChrome;
-//# sourceMappingURL=chrome.d.ts.map

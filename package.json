@@ -1,56 +1,57 @@
 {
   "name": "@gg-utils/terminal-ui-kit",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
   "type": "module",
   "description": "Reusable terminal UI primitives for classic readline, Ink, and OpenTUI command surfaces.",
   "exports": {
     "./cli-interactive": {
-      "types": "./src/cli-interactive/framework.ts",
-      "default": "./src/cli-interactive/framework.ts"
+      "types": "./dist/cli-interactive/framework.d.ts",
+      "default": "./dist/cli-interactive/framework.js"
     },
     "./ink/bridge-task": {
-      "types": "./src/ink/bridge-task.ts",
-      "default": "./src/ink/bridge-task.ts"
+      "types": "./dist/ink/bridge-task.d.ts",
+      "default": "./dist/ink/bridge-task.js"
     },
     "./ink/captured-output": {
-      "types": "./src/ink/captured-output.tsx",
-      "default": "./src/ink/captured-output.tsx"
+      "types": "./dist/ink/captured-output.d.ts",
+      "default": "./dist/ink/captured-output.js"
     },
     "./ink/chrome": {
-      "types": "./src/ink/chrome.tsx",
-      "default": "./src/ink/chrome.tsx"
+      "types": "./dist/ink/chrome.d.ts",
+      "default": "./dist/ink/chrome.js"
     },
     "./ink/command-preview": {
-      "types": "./src/ink/command-preview.tsx",
-      "default": "./src/ink/command-preview.tsx"
+      "types": "./dist/ink/command-preview.d.ts",
+      "default": "./dist/ink/command-preview.js"
     },
     "./ink/legend": {
-      "types": "./src/ink/legend.tsx",
-      "default": "./src/ink/legend.tsx"
+      "types": "./dist/ink/legend.d.ts",
+      "default": "./dist/ink/legend.js"
     },
     "./ink/status": {
-      "types": "./src/ink/status.tsx",
-      "default": "./src/ink/status.tsx"
+      "types": "./dist/ink/status.d.ts",
+      "default": "./dist/ink/status.js"
     },
     "./ink/use-stdout-dimensions": {
-      "types": "./src/ink/use-stdout-dimensions.ts",
-      "default": "./src/ink/use-stdout-dimensions.ts"
+      "types": "./dist/ink/use-stdout-dimensions.d.ts",
+      "default": "./dist/ink/use-stdout-dimensions.js"
     },
     "./opentui/create-renderer": {
-      "types": "./src/opentui/create-renderer.ts",
-      "default": "./src/opentui/create-renderer.ts"
+      "types": "./dist/opentui/create-renderer.d.ts",
+      "default": "./dist/opentui/create-renderer.js"
     }
   },
   "files": [
-    "dist",
-    "src",
-    "tsconfig.json",
-    "tsconfig.build.json"
+    "dist/",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
-    "build": "node ../../node_modules/typescript/bin/tsc -p tsconfig.build.json",
-    "type-check": "node ../../node_modules/typescript/bin/tsc --noEmit -p tsconfig.json"
+    "build": "tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint --max-warnings 0 .",
+    "test": "tsc -p tsconfig.test.json && node --test \".test-dist/**/*.unit.test.js\"",
+    "check:dist": "sh scripts/check-dist.sh"
   },
   "dependencies": {
     "@opentui/core": "^0.1.90",
@@ -58,8 +59,20 @@
     "react": "^19.2.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.0"
+    "@types/react": "19.2.0",
+    "typescript": "5.9.3",
+    "@types/node": "22.20.5",
+    "eslint": "9.39.5",
+    "typescript-eslint": "8.72.2"
   },
-  "main": "./src/cli-interactive/framework.ts",
-  "types": "./src/cli-interactive/framework.ts"
+  "main": "./dist/cli-interactive/framework.js",
+  "types": "./dist/cli-interactive/framework.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gg-utils/terminal-ui-kit.git"
+  },
+  "engines": {
+    "node": ">=22.0.0 <27"
+  }
 }

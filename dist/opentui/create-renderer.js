@@ -29,4 +29,3 @@ export async function openTuiCreateScriptRenderer() {
         useMouse: false,
     });
 }
-//# sourceMappingURL=create-renderer.js.map

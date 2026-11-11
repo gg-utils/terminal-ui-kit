@@ -21,4 +21,3 @@ declare const inkLegend: {
     InkLegend: typeof InkLegend;
 };
 export default inkLegend;
-//# sourceMappingURL=legend.d.ts.map

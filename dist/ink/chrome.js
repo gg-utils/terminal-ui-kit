@@ -1,4 +1,16 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+/**
+ * @fileoverview Ink chrome primitives: screen headers with app branding, panels with optional badges,
+ * panel sections, and column dividers for composing rich terminal UIs.
+ *
+ * This file owns the structural Ink components used to scaffold terminal CLI apps.
+ *
+ * @testing CLI manual: npm run terminal-ui-kit:type-check
+ * @see packages/terminal-ui-kit/src/ink/status.tsx - Status badge and tone semantics used by chrome components.
+ * @see packages/terminal-ui-kit/src/ink/command-preview.tsx - Command preview component rendered inside chrome panels.
+ * @documentation reviewed=2026-04-11 standard=FILE_OVERVIEW_STANDARDS_TYPESCRIPT@3
+ */
+import React from "react";
 import { Box, Text } from "ink";
 import { InkStatusBadge } from "./status.js";
 /** Top-of-screen header with app name, optional title + badge, description, summary, and notice lines. */
@@ -24,4 +36,3 @@ const inkChrome = {
     InkColumnDivider,
 };
 export default inkChrome;
-//# sourceMappingURL=chrome.js.map
